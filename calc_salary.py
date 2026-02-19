@@ -1,5 +1,6 @@
 from decimal import Decimal, ROUND_HALF_UP, InvalidOperation, getcontext
 import os
+from datetime import date, timedelta
 
 getcontext().prec = 28
 
@@ -34,9 +35,13 @@ def main():
     teacher_name = input("Teacher's name: ").strip() or "ISABELA"
     print("\nEnter information for both weeks:\n")
 
-    # Fixed dates and planning rate
-    start1, end1 = "11/03/25", "11/07/25"
-    start2, end2 = "11/10/25", "11/14/25"
+    # Current dates and planning rate
+    current_date = date.today()
+    weekday = current_date.strftime("%w")
+    start1 = current_date - timedelta(days= weekday - 1)
+    end1 = start1 + timedelta(days=4)
+    start2 = start1 + timedelta(days=7)
+    end2 = start2 + timedelta(days=4)
     rate_training = Decimal("15")
 
     # WEEK 1
