@@ -37,10 +37,10 @@ def main():
 
     # Current dates and planning rate
     current_date = date.today()
-    weekday = current_date.strftime("%w")
-    start1 = current_date - timedelta(days= weekday - 1)
+    weekday = int(current_date.strftime("%w"))
+    start1 = current_date - timedelta(days= weekday - 1 + 7)
     end1 = start1 + timedelta(days=4)
-    start2 = start1 + timedelta(days=7)
+    start2 = current_date + timedelta(days= weekday - 1)
     end2 = start2 + timedelta(days=4)
     rate_training = Decimal("15")
 
